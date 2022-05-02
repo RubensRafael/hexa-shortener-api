@@ -6,7 +6,7 @@ import * as query from './query.js'
 import { choice } from 'randomicsjs'
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 
 app.use(cors())
@@ -20,7 +20,7 @@ app.post('/',async (req,res)=>{
   // Verifica se é uma url válida
   const { url } = req.body
   let regex = new RegExp("((http|https)://)(www.)?" + "[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]" + "{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)")
-
+  
   //Se não for
   if(!regex.test(url)){
     res.status(400).send({'result':'URL inválida'})
