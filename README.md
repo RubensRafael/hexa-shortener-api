@@ -1,1 +1,1 @@
-# exa-shortener-api
+# hexa-shortener-api
