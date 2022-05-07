@@ -59,3 +59,5 @@ app.get('/:code',async (req,res)=>{
 app.listen(port, () => {
   console.log(`app listening...`)
 })
+
+export default app
