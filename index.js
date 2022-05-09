@@ -17,6 +17,8 @@ const CODE = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 
 app.post('/',async (req,res)=>{
+   res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
   // Verifica se é uma url válida
   const { url } = req.body
   let regex = new RegExp("((http|https)://)(www.)?" + "[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]" + "{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)")
@@ -46,7 +48,8 @@ app.post('/',async (req,res)=>{
 })
 
 app.get('/:code',async (req,res)=>{
-
+ res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
   const code = await db.query(query.GET_ORIGIN,[req.params.code])// recupera o link original, baseado no código.
   if(code.rowCount > 0){//se encontrar, redirecione.
     res.redirect(code.rows[0].origin)
